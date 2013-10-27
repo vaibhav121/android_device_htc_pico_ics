@@ -18,6 +18,29 @@
 # We havent decided what props we need,yet
 # $(call inherit-product-if-exists, vendor/htc/pico/pico-vendor.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
+
+# MiniCM9 visuals
+PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/app/MiniCM9.apk:system/app/MiniCM9.apk \
+    device/htc/pico/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+
+# Extra prebuilt and init files
+PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner \
+    device/htc/pico/prebuilt/etc/init.d/04modules:system/etc/init.d/04modules \
+    device/htc/pico/prebuilt/xbin/zipalign:system/xbin/zipalign
+
+# Hciattach
+PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/bin/hciattach:system/bin/hciattach
+
+# Extra Cyanogen vendor files
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml    
+
 # Video decoding
 PRODUCT_PACKAGES += \
     libstagefrighthw \
@@ -47,7 +70,7 @@ PRODUCT_PACKAGES += \
     dexpreopt \
     lights.msm7x27a \
     sensors.msm7x27a \
-    gps.pico    
+    gps.pico
     
 # Camera
 PRODUCT_PACKAGES += \
@@ -55,7 +78,21 @@ PRODUCT_PACKAGES += \
     
 # Misc
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
+    com.android.future.usb.accessory \
+    rzscontrol \
+    hostap \
+    screencap \
+    FileManager
+
+# for bugmailer
+PRODUCT_PACKAGES += send_bug
+PRODUCT_COPY_FILES += \
+        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
+        system/extras/bugmailer/send_bug:system/bin/send_bug
+
+# for Compcache
+PRODUCT_COPY_FILES += \
+        device/htc/pico/prebuilt/xbin/rzscontrol:system/xbin/rzscontrol
 
 ## Hardware properties 
 PRODUCT_COPY_FILES += \
@@ -113,9 +150,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=mass_storage \
     persist.service.adb.enable=1
 
-$(call inherit-product, build/target/product/full.mk)
-DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
-
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml 
@@ -140,13 +174,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
     device/htc/pico/prebuilt/kineto_gan.ko:system/lib/modules/kineto_gan.ko \
-    device/htc/pico/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
-    device/htc/pico/prebuilt/tun.ko:system/lib/modules/tun.ko \
+    device/htc/pico/prebuilt/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
+    device/htc/pico/prebuilt/scsi_wait_scan.ko:system/lib/modules/scsi_wait_system.ko
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/htc/pico/files/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+    device/htc/pico/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/htc/pico/prebuilt/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+    device/htc/pico/prebuilt/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
@@ -173,8 +208,8 @@ PRODUCT_COPY_FILES += \
 
 # 3D(ICS Blobs)
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    vendor/htc/pico/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+    device/htc/pico/prebuilt/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    device/htc/pico/prebuilt/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
     vendor/htc/pico/proprietary/lib/libgsl.so:system/lib/libgsl.so \
     vendor/htc/pico/proprietary/lib/libOpenVG.so:system/lib/libOpenVG.so \
     vendor/htc/pico/proprietary/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
@@ -193,7 +228,7 @@ PRODUCT_COPY_FILES += \
     
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/gps.conf:system/etc \
+    device/htc/pico/prebuilt/etc/gps.conf:system/etc \
     vendor/htc/pico/proprietary/etc/spn-conf.xml:system/etc 
 
 # Audio DSP Profiles
@@ -235,7 +270,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
     ro.telephony.call_ring.multiple=false \
-    ro.vold.umsdirtyratio=20
+    ro.vold.umsdirtyratio=20 \
+    persist.service.zram=1 \
+    ro.zram.default=18 \
+    ro.config.ringtone=CyanTone.ogg \
+    ro.config.notification_sound=CyanPing.ogg \
+    ro.config.alarm_alert=CyanAlarm.ogg \
+    persist.sys.themeId=MiniCM9 \
+    persist.sys.themePackageName=com.darkdog.theme.minicm9
     
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
