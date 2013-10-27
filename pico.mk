@@ -114,9 +114,9 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/init.pico.rc:root/init.pico.rc \
-    device/htc/pico/files/ueventd.pico.rc:root/ueventd.pico.rc \
-    device/htc/pico/files/init.pico.usb.rc:root/init.pico.usb.rc \
+    device/htc/pico/ramdisk/init.pico.rc:root/init.pico.rc \
+    device/htc/pico/ramdisk/ueventd.pico.rc:root/ueventd.pico.rc \
+    device/htc/pico/ramdisk/init.pico.usb.rc:root/init.pico.usb.rc \
     
 # Camera
 PRODUCT_COPY_FILES += \
@@ -165,7 +165,7 @@ PRODUCT_COPY_FILES += \
 
 # Vold 
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/etc/vold.fstab:system/etc/vold.fstab 
+    device/htc/pico/prebuilt/etc/vold.fstab:system/etc/vold.fstab 
 
 # Prebuilt Binaries
 # Don't work on 4.0.4 because from 2.3.5! And we don't need this !
