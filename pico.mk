@@ -18,8 +18,6 @@
 # We havent decided what props we need,yet
 # $(call inherit-product-if-exists, vendor/htc/pico/pico-vendor.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
 # MiniCM9 visuals
@@ -223,7 +221,7 @@ PRODUCT_COPY_FILES += \
     
 # RIL
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
+    device/htc/pico/prebuilt/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
     vendor/htc/pico/proprietary/lib/libqc-opt.so:system/lib/libqc-opt.so \
     
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
@@ -243,7 +241,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd:system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd \
+    vendor/htc/pico/proprietary/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd:system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -259,7 +257,7 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/keylayout/himax-touchscreen.kl:system/usr/keylayout/himax-touchscreen.kl \
     device/htc/pico/prebuilt/usr/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
     device/htc/pico/prebuilt/usr/idc/himax-touchscreen.idc:system/usr/idc/himax-touchscreen.idc \
-    device/htc/pico/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
+    device/htc/pico/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
     
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.camera=pico \
@@ -275,9 +273,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.zram.default=18 \
     ro.config.ringtone=CyanTone.ogg \
     ro.config.notification_sound=CyanPing.ogg \
-    ro.config.alarm_alert=CyanAlarm.ogg \
-    persist.sys.themeId=MiniCM9 \
-    persist.sys.themePackageName=com.darkdog.theme.minicm9
+    ro.config.alarm_alert=CyanAlarm.ogg
     
 PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
