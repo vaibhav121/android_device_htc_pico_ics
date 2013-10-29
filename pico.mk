@@ -18,6 +18,8 @@
 # We havent decided what props we need,yet
 # $(call inherit-product-if-exists, vendor/htc/pico/pico-vendor.mk)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
 # MiniCM9 visuals
@@ -30,10 +32,6 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner \
     device/htc/pico/prebuilt/etc/init.d/04modules:system/etc/init.d/04modules \
     device/htc/pico/prebuilt/xbin/zipalign:system/xbin/zipalign
-
-# Hciattach
-PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/bin/hciattach:system/bin/hciattach
 
 # Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \
@@ -182,7 +180,7 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_b2.bin:system/etc/firmware/fw_bcm4330_b2.bin \
     device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_apsta_b2.bin:system/etc/firmware/fw_bcm4330_apsta_b2.bin \
-    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin \
+    device/htc/pico/prebuilt/etc/firmware/fw_bcm4330_p2p_b2.bin:system/etc/firmware/fw_bcm4330_p2p_b2.bin
     
 # Audio
 # Need all audio filters
@@ -193,13 +191,13 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/AudioPara4_WB.csv:system/etc/AudioPara4_WB.csv \
     device/htc/pico/prebuilt/etc/AudioPreProcess.csv:system/etc/AudioPreProcess.csv \
     device/htc/pico/prebuilt/etc/AudioFilter_HP.csv:system/etc/AudioFilter_HP.csv \
-    vendor/htc/pico/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
-    vendor/htc/pico/proprietary/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so \
+    device/htc/pico/prebuilt/lib/libaudioeq.so:system/lib/libaudioeq.so \
+    device/htc/pico/prebuilt/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so
     
 
 # Sensors
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/hw/sensors.pico.so:system/lib/hw/sensors.pico.so \
+    vendor/htc/pico/proprietary/lib/hw/sensors.pico.so:system/lib/hw/sensors.pico.so
     
 # GPS
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
@@ -222,7 +220,7 @@ PRODUCT_COPY_FILES += \
 # RIL
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
-    vendor/htc/pico/proprietary/lib/libqc-opt.so:system/lib/libqc-opt.so \
+    device/htc/pico/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so
     
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
 PRODUCT_COPY_FILES += \
