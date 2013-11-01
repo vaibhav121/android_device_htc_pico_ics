@@ -22,17 +22,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
-# MiniCM9 visuals
-PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/app/MiniCM9.apk:system/app/MiniCM9.apk \
-    device/htc/pico/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
-
-# Extra prebuilt and init files
-PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner \
-    device/htc/pico/prebuilt/etc/init.d/04modules:system/etc/init.d/04modules \
-    device/htc/pico/prebuilt/xbin/zipalign:system/xbin/zipalign
-
 # Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml    
@@ -74,21 +63,7 @@ PRODUCT_PACKAGES += \
     
 # Misc
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    rzscontrol \
-    hostap \
-    screencap \
-    FileManager
-
-# for bugmailer
-PRODUCT_PACKAGES += send_bug
-PRODUCT_COPY_FILES += \
-        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-        system/extras/bugmailer/send_bug:system/bin/send_bug
-
-# for Compcache
-PRODUCT_COPY_FILES += \
-        device/htc/pico/prebuilt/xbin/rzscontrol:system/xbin/rzscontrol
+    com.android.future.usb.accessory
 
 ## Hardware properties 
 PRODUCT_COPY_FILES += \

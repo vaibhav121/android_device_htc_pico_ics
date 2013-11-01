@@ -36,12 +36,33 @@ on boot
 # be killed.  These numbers are in pages (4k).
     setprop ro.FOREGROUND_APP_MEM 3584
     setprop ro.VISIBLE_APP_MEM 4096
-    setprop ro.SECONDARY_SERVER_MEM 6144
+#SECONDARY_SERVER:
+#    // This is a process holding a secondary server -- killing it will not
+#    // have much of an impact as far as the user is concerned. Value set in
+#    // system/rootdir/init.rc on startup.
+#Value set to: 32 MB
+    setprop ro.SECONDARY_SERVER_MEM 8196
+#HIDDEN_APP:
+#    // This is a process only hosting activities that are not visible,
+#    // so it can be killed without any disruption. Value set in
+#    // system/rootdir/init.rc on startup.
+#Value set to: 64 MB
+    setprop ro.HIDDEN_APP_MEM 16384
+#CONTENT_PROVIDER:
+#    // This is a process with a content provider that does not have any clients
+#    // attached to it.  If it did have any clients, its adjustment would be the
+#    // one for the highest-priority of those processes.    
+#Value set to: 128 MB
+    setprop ro.CONTENT_PROVIDER_MEM 32768
+#EMPTY_APP:
+#    // This is a process without anything currently running in it.  Definitely
+#    // the first to go! Value set in system/rootdir/init.rc on startup.
+#    // This value is initalized in the constructor, careful when refering to
+#    // this static variable externally.
+#Value set to: 256 MB
+    setprop ro.EMPTY_APP_MEM 65536
     setprop ro.BACKUP_APP_MEM 6144
     setprop ro.HOME_APP_MEM 6144
-    setprop ro.HIDDEN_APP_MEM 7168
-    setprop ro.CONTENT_PROVIDER_MEM 7680
-    setprop ro.EMPTY_APP_MEM 8192
 
     # bluetooth power up/down interface
     chown bluetooth bluetooth /dev/ttyHS0

@@ -1,6 +1,5 @@
 # Prepare for new BootAnimation
-#TARGET_BOOTANIMATION_NAME := vertical-320x480
-#We are using prebuilt bootanim!
+TARGET_BOOTANIMATION_NAME := vertical-320x480
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, vendor/cm/config/gsm.mk)
