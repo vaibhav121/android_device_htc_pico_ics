@@ -2,7 +2,7 @@ import init.pico.usb.rc
 
 on early-init
     export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0000 system system
+    mkdir /mnt/sdcard 0755 system system
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
 
@@ -118,12 +118,6 @@ on boot
     setprop ro.ril.fd.scron.timeout 4
     setprop ro.ril.fd.scroff.timeout 3
 
-service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus -d --no2bytes --tosleep=50000 --enable_hci --baudrate 3000000 --patchram /etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd --scopcm=0,0,0,0,0,0,0,3,3,0 /dev/ttyHS0
-    user root
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
 service p2p_supplicant /system/bin/wpa_supplicant -ieth0 -Dnl80211 -e/data/misc/wifi/entropy.bin -c/data/misc/wifi/wpa_supplicant.conf \
     # we will start as root and wpa_supplicant will switch to user wifi
     # after setting up the capabilities required for WEXT
@@ -186,7 +180,32 @@ service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
     oneshot
     disabled
 
-    # bugreport is triggered by the KEY_VOLUMEUP and BTN_MOUSE keycodes
+# Off-mode charging
+service charging /system/bin/charging
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service zchgd_offmode /system/bin/zchgd -pseudooffmode
+	class main
+    user root
+    group root graphics
+    disabled
+
+service zchgd_onmode /system/bin/zchgd -onmode
+	class main
+    user root
+    group root graphics
+
+on property:dev.zcharge=true
+    start zchgd_onmode
+
+on property:dev.zcharge=false
+    stop zchgd_onmode
+
+# bugreport is triggered by the KEY_VOLUMEUP and BTN_MOUSE keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     class main
     disabled

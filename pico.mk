@@ -241,6 +241,35 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd:system/etc/firmware/BCM4330B1_002.001.003.0221.0228.hcd
 
+# charger images
+PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/media/zchgd/batt_0.rle:system/media/zchgd/batt_0.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_100.rle:system/media/zchgd/batt_100.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_10.rle:system/media/zchgd/batt_10.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_20.rle:system/media/zchgd/batt_20.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_30.rle:system/media/zchgd/batt_30.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_40.rle:system/media/zchgd/batt_40.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_50.rle:system/media/zchgd/batt_50.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_5.rle:system/media/zchgd/batt_5.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_60.rle:system/media/zchgd/batt_60.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_70.rle:system/media/zchgd/batt_70.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_80.rle:system/media/zchgd/batt_80.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_90.rle:system/media/zchgd/batt_90.rle \
+    device/htc/pico/prebuilt/media/zchgd/batt_95.rle:system/media/zchgd/batt_95.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_00.rle:system/media/zchgd/charging_00.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_01.rle:system/media/zchgd/charging_01.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_02.rle:system/media/zchgd/charging_02.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_03.rle:system/media/zchgd/charging_03.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_04.rle:system/media/zchgd/charging_04.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_05.rle:system/media/zchgd/charging_05.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_06.rle:system/media/zchgd/charging_06.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_07.rle:system/media/zchgd/charging_07.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_08.rle:system/media/zchgd/charging_08.rle \
+    device/htc/pico/prebuilt/media/zchgd/charging_09.rle:system/media/zchgd/charging_09.rle \
+    device/htc/pico/prebuilt/media/zchgd/error.rle:system/media/zchgd/error.rle \
+    device/htc/pico/prebuilt/bin/charging:system/bin/charging \
+    device/htc/pico/prebuilt/bin/zchgd:system/bin/zchgd
+
 # Keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
