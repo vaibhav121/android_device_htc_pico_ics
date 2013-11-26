@@ -95,6 +95,9 @@ on boot
     # Enable low memory killer to check file pages
     write /sys/module/lowmemorykiller/parameters/minfile 0,0,0,5120,5632,6144
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
+    
+    #usb tethering
+    chmod 0777 /sys/class/usb_composite/*
 
 	# fix for entropy service and some other that failed
     # Need for NET

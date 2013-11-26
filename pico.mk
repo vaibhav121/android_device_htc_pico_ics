@@ -25,7 +25,8 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 # MiniCM9 visuals
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/app/MiniCM9.apk:system/app/MiniCM9.apk \
-    device/htc/pico/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+    device/htc/pico/prebuilt/app/CMFileManager-20130718-c3f2aac608.apk:system/app/CMFileManager.apk \
+    device/htc/pico/prebuilt/media/320.zip:system/media/bootanimation.zip
 
 # Extra prebuilt and init files
 PRODUCT_COPY_FILES += \
@@ -77,8 +78,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     rzscontrol \
     hostap \
-    screencap \
-    FileManager
+    screencap
 
 # for bugmailer
 PRODUCT_PACKAGES += send_bug
@@ -201,6 +201,9 @@ PRODUCT_COPY_FILES += \
     
 # GPS
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
+PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/etc/gps.conf:system/etc \
+    device/htc/pico/prebuilt/lib/hw/gps.pico.so:system/lib/hw/gps.pico.so
 
 # 3D(ICS Blobs)
 PRODUCT_COPY_FILES += \
@@ -224,7 +227,6 @@ PRODUCT_COPY_FILES += \
     
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/gps.conf:system/etc \
     vendor/htc/pico/proprietary/etc/spn-conf.xml:system/etc 
 
 # Audio DSP Profiles

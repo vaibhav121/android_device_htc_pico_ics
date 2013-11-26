@@ -1,6 +1,6 @@
 # Prepare for new BootAnimation
 #TARGET_BOOTANIMATION_NAME := vertical-320x480
-#We are using prebuilt bootanim!
+#We are using the new prebuilt cyanogenmod bootanim!
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, vendor/cm/config/gsm.mk)
@@ -17,7 +17,11 @@ PRODUCT_BRAND := htc_europe
 PRODUCT_DEVICE := pico
 PRODUCT_MODEL := HTC Explorer A310e
 PRODUCT_MANUFACTURER := HTC
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=pico BUILD_ID=IMM76L BUILD_FINGERPRINT=htc_asia_india/htc_pico/pico:2.3.5/GRJ90/171430.1:user/release-keys PRIVATE_BUILD_DESC="1.12.720.1 CL171430 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=pico \
+    BUILD_ID=IMM76L \
+    BUILD_FINGERPRINT=htc_asia_india/htc_pico/pico:2.3.5/GRJ90/171430.1:user/release-keys \
+    PRIVATE_BUILD_DESC="1.12.720.1 CL171430 release-keys"
 
 # Release name and versioning
 PRODUCT_RELEASE_NAME := pico
