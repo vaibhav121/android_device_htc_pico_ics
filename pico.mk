@@ -29,6 +29,13 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/app/CMFileManager.odex:system/app/CMFileManager.odex \
     device/htc/pico/prebuilt/media/320.zip:system/media/bootanimation.zip
     
+# Default ringtone
+# resultant of cm_pico_audio.mk
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=CyanTone.ogg \
+    ro.config.notification_sound=CyanPing.ogg \
+    ro.config.alarm_alert=CyanAlarm.ogg
+
 # Extra prebuilt and init files
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner \
@@ -221,8 +228,8 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/gps.conf:system/etc/gps.conf \
-    device/htc/pico/prebuilt/lib/hw/gps.pico.so:system/lib/hw/gps.pico.so 
+    vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
+    vendor/htc/pico/proprietary/lib/libqc-opt.so:system/lib/libqc-opt.so
     
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
