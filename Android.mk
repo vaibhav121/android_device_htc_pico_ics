@@ -15,5 +15,8 @@
 LOCAL_PATH := $(my-dir)
 
 ifeq ($(TARGET_DEVICE),pico)
-include $(call all-makefiles-under,$(LOCAL_PATH))
+    subdir_makefiles := \
+	 $(LOCAL_PATH)/libaudio/Android.mk \
+	 $(LOCAL_PATH)/libril/Android.mk
+     include $(subdir_makefiles)
 endif

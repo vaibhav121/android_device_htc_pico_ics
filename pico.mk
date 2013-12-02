@@ -19,22 +19,14 @@
 # $(call inherit-product-if-exists, vendor/htc/pico/pico-vendor.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-#defined in cm.mk, but still...
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
 # MiniCM9 visuals
 PRODUCT_COPY_FILES += \
+    device/htc/pico/prebuilt/app/MiniCM9.apk:system/app/MiniCM9.apk \
     device/htc/pico/prebuilt/app/CMFileManager-20130718-c3f2aac608.apk:system/app/CMFileManager.apk \
-    device/htc/pico/prebuilt/app/CMFileManager.odex:system/app/CMFileManager.odex \
     device/htc/pico/prebuilt/media/320.zip:system/media/bootanimation.zip
-    
-# Default ringtone
-# resultant of cm_pico_audio.mk
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=CyanTone.ogg \
-    ro.config.notification_sound=CyanPing.ogg \
-    ro.config.alarm_alert=CyanAlarm.ogg
 
 # Extra prebuilt and init files
 PRODUCT_COPY_FILES += \
@@ -112,6 +104,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
+    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
@@ -209,8 +202,8 @@ PRODUCT_COPY_FILES += \
 # GPS
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/gps.conf:system/etc/gps.conf \
-    device/htc/pico/prebuilt/lib/hw/gps.pico.so:system/lib/hw/gps.pico.so 
+    device/htc/pico/prebuilt/etc/gps.conf:system/etc \
+    device/htc/pico/prebuilt/lib/hw/gps.pico.so:system/lib/hw/gps.pico.so
 
 # 3D(ICS Blobs)
 PRODUCT_COPY_FILES += \
@@ -225,12 +218,17 @@ PRODUCT_COPY_FILES += \
     vendor/htc/pico/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     vendor/htc/pico/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     vendor/htc/pico/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so 
-
+    
+    
 # RIL
 PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
-    vendor/htc/pico/proprietary/lib/libqc-opt.so:system/lib/libqc-opt.so
+    device/htc/pico/prebuilt/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
+    device/htc/pico/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so
     
+# Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
+PRODUCT_COPY_FILES += \
+    vendor/htc/pico/proprietary/etc/spn-conf.xml:system/etc 
+
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/soundimage/srs_global.cfg:system/etc/soundimage/srs_global.cfg \

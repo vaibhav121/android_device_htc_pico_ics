@@ -1,3 +1,7 @@
+# Prepare for new BootAnimation
+#TARGET_BOOTANIMATION_NAME := vertical-320x480
+#We are using the new prebuilt cyanogenmod bootanim!
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, vendor/cm/config/gsm.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
