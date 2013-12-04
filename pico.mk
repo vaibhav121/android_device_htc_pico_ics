@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
-# MiniCM9 visuals
+# Customization (# minicm9 theme, CM File Manager, bootanimation)
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/app/MiniCM9.apk:system/app/MiniCM9.apk \
     device/htc/pico/prebuilt/app/CMFileManager-20130718-c3f2aac608.apk:system/app/CMFileManager.apk \
@@ -104,7 +104,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
@@ -202,7 +201,7 @@ PRODUCT_COPY_FILES += \
 # GPS
 # Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/gps.conf:system/etc \
+    device/htc/pico/prebuilt/etc/gps.conf:system/etc/gps.conf \
     device/htc/pico/prebuilt/lib/hw/gps.pico.so:system/lib/hw/gps.pico.so
 
 # 3D(ICS Blobs)
@@ -224,10 +223,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/lib/libhtc_ril.so:system/lib/libhtc_ril.so \
     device/htc/pico/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so
-    
-# Don't work on 4.0.4 because from 2.3.5! You need to compile it with yourself
-PRODUCT_COPY_FILES += \
-    vendor/htc/pico/proprietary/etc/spn-conf.xml:system/etc 
 
 # Audio DSP Profiles
 PRODUCT_COPY_FILES += \
