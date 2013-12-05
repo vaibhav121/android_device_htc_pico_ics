@@ -218,6 +218,22 @@ on property:dev.zcharge=true
 on property:dev.zcharge=false
     stop zchgd_onmode
 
+# compcache - handle at boot
+service compcache /system/bin/handle_compcache
+ class main
+ user root
+ group root
+ disabled
+
+on property:persist.service.zram=10
+ start compcache
+
+on property:persist.service.zram=18
+ start compcache
+
+on property:persist.service.zram=26
+ start compcache
+
 # bugreport is triggered by the KEY_VOLUMEUP and BTN_MOUSE keycodes
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     class main
