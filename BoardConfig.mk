@@ -118,13 +118,6 @@ TARGET_HAVE_BYPASS := false
 TARGET_USES_OVERLAY := false
 TARGET_QCOM_HDMI_OUT := false
 
-## Qualcomm
-#Omx Codec
-USES_NAM := true
-ifdef USES_NAM
-    COMMON_GLOBAL_CFLAGS += -DUSES_NAM
-endif
-
 # ICS Stuff
 BOARD_HAS_NO_SELECT_BUTTON := true
 
