@@ -26,7 +26,7 @@ ro.workaround.noautofocus = 1
 # 
 # Increase SKIA decode memory capability for progressive jpg file
 #
-ro.media.dec.jpeg.memcap 	= 20000000
+ro.media.dec.jpeg.memcap = 20000000
 
 htc.audio.alc.enable = 1 
 htc.audio.swalt.enable = 1 
@@ -37,20 +37,10 @@ com.qc.hardware=true
 debug.sf.hw = 1
 dalvik.vm.heapsize=48m
 
-#Makes streaming videos stream faster
-media.stagefright.enable-player=true
-media.stagefright.enable-meta=true
-media.stagefright.enable-scan=true
-#fix HQ
-media.stagefright.enable-http=false
-#fix recording
-media.stagefright.enable-record=true
-
-
 persist.sys.use_dithering=2
 
 # For QC perf binary hooks
 # src:vendor/qcom/proprietary/android-perf/release/lib/<CPU arch>/libqc-opt.so
 ro.vendor.extension_library=/system/lib/libqc-opt.so
-debug.camcorder.disablemeta=0
+debug.camcorder.disablemeta=1
 dalvik.vm.stack-trace-file=/data/anr/traces.txt

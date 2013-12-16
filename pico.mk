@@ -148,7 +148,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml 
-    PRODUCT_PACKAGES += \
+
+PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     VisualizationWallpapers \
@@ -161,9 +162,6 @@ PRODUCT_COPY_FILES += \
 # Vold 
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/vold.fstab:system/etc/vold.fstab 
-
-# Prebuilt Binaries
-# Don't work on 4.0.4 because from 2.3.5! And we don't need this !
 
 # Prebuilt Modules
 PRODUCT_COPY_FILES += \
@@ -282,6 +280,12 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl \
     device/htc/pico/prebuilt/usr/idc/himax-touchscreen.idc:system/usr/idc/himax-touchscreen.idc \
     device/htc/pico/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
+
+# Prebuilt apps
+PRODUCT_COPY_FILES += \
+    vendor/prebuilt/apps/Apollo_for_2.3.3-4.0.4.apk:system/app/Apollo.apk \
+    vendor/prebuilt/apps/com.android2.calculator3.apk:system/app/Calculator.apk \
+    vendor/prebuilt/apps/com.klinker.deskclock.apk:system/app/DeskClock.apk
     
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
