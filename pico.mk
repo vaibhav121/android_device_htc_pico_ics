@@ -22,17 +22,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
 
-# Customization (# minicm9 theme, CM File Manager, bootanimation)
+# Customization (# CM File Manager, bootanimation)
 PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/app/MiniCM9.apk:system/app/MiniCM9.apk \
     device/htc/pico/prebuilt/app/CMFileManager-20130718-c3f2aac608.apk:system/app/CMFileManager.apk \
     device/htc/pico/prebuilt/media/320.zip:system/media/bootanimation.zip
-
-# Extra prebuilt and init files
-PRODUCT_COPY_FILES += \
-    device/htc/pico/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner \
-    device/htc/pico/prebuilt/etc/init.d/04modules:system/etc/init.d/04modules \
-    device/htc/pico/prebuilt/xbin/zipalign:system/xbin/zipalign
 
 # Extra Cyanogen vendor files
 PRODUCT_COPY_FILES += \
@@ -281,11 +274,6 @@ PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/usr/idc/himax-touchscreen.idc:system/usr/idc/himax-touchscreen.idc \
     device/htc/pico/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
-# Prebuilt apps
-PRODUCT_COPY_FILES += \
-    vendor/prebuilt/apps/Apollo_for_2.3.3-4.0.4.apk:system/app/Apollo.apk \
-    vendor/prebuilt/apps/com.android2.calculator3.apk:system/app/Calculator.apk \
-    vendor/prebuilt/apps/com.klinker.deskclock.apk:system/app/DeskClock.apk
     
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
